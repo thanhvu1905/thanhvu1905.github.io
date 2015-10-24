@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>TỪ ĐIỂN NHẬT VIỆT</title>
+<style>
+.modal-start {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1001;
+	height: 100%;
+	width: 100%;
+	background: #0072C6 url('./images/loader_icon.gif') 50% 300px
+		no-repeat;
+	text-align: center;
+	padding-top: 200px;
+	color: #1abc9c;
+	font-size: 50px;
+}
+.loading-start {
+	overflow: hidden
+}
+.loading-start .modal-start {
+	display: block;
+}
+</style>
+<link rel="shortcut icon" href="./images/logo.png">
+<link rel="stylesheet" href="./css/build.css">
+</head>
+<body class="metro">
+	<div id="div-main" class="div-main">
+		<div class="modal-start">Đang tải dữ liệu ...</div>
+		<div class="modal-search">Đang tra từ ...</div>
+		<script>document.getElementById("div-main").classList.add("loading-start")</script>
+		<div id="div-left-wrapper">
+			<div id="div-left">
+				<div class="logo">
+					<img class="logo-img" src="./images/logo.png">
+				</div>
+				<div id="div-history">
+					<div id="reminder-title" class="history-title">
+						Nhắc Từ
+					</div>
+					<div id="remind-group"></div>
+
+					<div id="history-title" class="history-title">
+						<i class="icon-history"></i> Lịch Sử
+					</div>
+					<div id="history-group"></div>
+				</div>
+			</div>
+		</div>
+		<div id="div-right-wrapper">
+			<div id="div-right">
+				<nav class="navigation-bar">
+					<div class="navigation-bar-content">
+						<a href="/" class="element"> <span class="icon-grid-view"></span>TỪ
+							ĐIỂN NHẬT-VIỆT</sup></a>
+
+						<div class="element place-right" onclick="panel.getSettingPanel()">
+							CÀI ĐẶT <span class="icon-th-thumb"></span>
+						</div>
+						<span class="element-divider place-right"></span> <a
+							class="pull-menu " href="#"></a>
+						<ul class="element-menu place-right">
+							<li><a class="dropdown-toggle" href="#">Hướng Dẫn</a>
+								<ul class="dropdown-menu " data-role="dropdown">
+									<li class="disabled"><a href="#">Diễn Đàn</a></li>
+									<li><a href="javascript: panel.getHelpPanel()">Hướng Dẫn</a></li>
+									<li><a href="http://phanduyphuoc.tk" target="_blank">Phan Duy Phước</a></li>
+								</ul></li>
+						</ul>
+						<span class="element-divider place-right"></span>
+					</div>
+				</nav>
+
+				<div class="search-box">
+					<div class="search-bar">
+						<input id="word-box" maxlength="80" type="text"
+							autofocus="autofocus" placeholder="tìm kiếm...">
+							<i class="icon-bell"
+							onclick="hisData.manualAddRemind()" title="Thêm vào Nhắc Từ"></i>
+						<button class="search-btn" onclick="search.search()">
+							<i class="icon-search"></i>
+						</button>
+						<button class="search-btn" onclick="drawKanji.toogleDrawpad()">
+							<i class="icon-edit"></i>
+						</button>
+					</div>
+					<br />
+				</div>
+				<div id="search-result">
+					<div class="tab-control" data-role="tab-control">
+						<ul class="tabs">
+							<li class="active"><a href="#_page_1">Từ Vựng</a></li>
+							<li><a href="#_page_2">Hán Tự</a></li>
+							<li><a href="#_page_3">Ngữ Pháp</a></li>
+						</ul>
+						<div class="frames">
+							<div class="frame" id="_page_1">
+								<div id="new-word">
+									<div id="new-word-ctn"></div>
+								</div>
+							</div>
+							<div class="frame" id="_page_2">
+								<div id="kanji">
+									<div id="kanji-ctn"></div>
+								</div>
+							</div>
+							<div class="frame" id="_page_3">
+								<div id="grammar">
+									<div id="grammar-ctn">
+										<div style="font-size: 150px; color: #bdc3c7;">Coming soon!</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="draw-pad" class="draw-pad">
+		<canvas id="kanji-draw" class="kanji-draw"></canvas>
+		<div class="kanji-menu-bar">
+			<div id="kanji-result"></div>
+			<div id="kanji-menu">
+				<button id="full-pad-btn">
+					<i class="icon-resize-full-alt"></i>
+				</button>
+				<button onclick="drawKanji.clearCanvas()">
+					<i class="icon-cancel"></i>
+				</button>
+				<button onclick="drawKanji.backCanvas()">
+					<i class="icon-reply"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div id="notif-change">
+	</div>
+	<audio id="sound-control" controls hidden >
+		<source id="sound-remind" src="" type="audio/mpeg">
+	</audio>
+	<div class="volume-bar" style="position: absolute; bottom:10px; right:25px; width:200px">
+		<h2>Volume</h2>
+		<div class="slider"
+			 onmouseup= "dropValueToInput()" 
+			 data-role="slider" 
+			 data-show-hint="true" 
+			 data-position="75">
+		</div>
+	</div>
+</body>
+<script src="./js/build.js"></script>
+</html>
