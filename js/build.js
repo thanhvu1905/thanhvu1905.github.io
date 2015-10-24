@@ -1052,7 +1052,7 @@ AlertWord.prototype = {
     loadSound: function(notifTxt) {
         if (SOUND_REMIND) {
             soundURL = 'http://www.ispeech.org/p/generic/getaudio?text=' + notifTxt 
-            + '&speed=-1&action=convert';
+            + '&speed=-2&action=convert';
             $("#sound-remind").attr("src", soundURL);
             $("#sound-control").trigger('load');
         }
